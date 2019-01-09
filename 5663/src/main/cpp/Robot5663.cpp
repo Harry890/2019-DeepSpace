@@ -10,6 +10,9 @@ void Robot::RobotInit() {
   shooter = new frc::Spark(2);
   intake = new frc::Spark(3);
 
+  // pistons
+  Hatch_deploy = new frc::DoubleSolenoid(0, 1);
+
   xbox = new frc::XboxController(0);
 }
 
@@ -38,7 +41,16 @@ void Robot::TeleopPeriodic() {
   else {
     intake->Set(xbox->GetTriggerAxis(hand::kRightHand));
   }
-}
+
+  if(xbox->GetAButton() == 1){
+    Hatch_deploy->frc::DoubleSolenoid::Set	(frc::DoubleSolenoid::kReverse);
+  }
+  else{ Hatch_deploy->frc::DoubleSolenoid::Set	(frc::DoubleSolenoid::kForward);
+  }
+
+
+  }
+
 
 void Robot::TestInit() {}
 void Robot::TestPeriodic() {}
