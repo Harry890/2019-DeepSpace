@@ -5,10 +5,9 @@ using hand = frc::XboxController::JoystickHand; // Type alias for hand
 
 void Robot::RobotInit() {
   // Sparks
-  left_motors = new frc::Spark(0);
-  right_motors = new frc::Spark(1);
-  shooter = new frc::Spark(2);
-  intake = new frc::Spark(3);
+  left_motor = new frc::Spark(0);
+  right_motor = new frc::Spark(1);
+  intake = new frc::Spark(2);
 
   // pistons
   Hatch_deploy = new frc::DoubleSolenoid(0, 1);
@@ -30,18 +29,18 @@ void Robot::TeleopPeriodic() {
   right_speed *= std::abs(right_speed);
   //intake_speed *= std::abs(intake_speed);
 
-  left_motors->Set(left_speed);
-  right_motors->Set(right_speed);
-  //intake->Set(intake_speed);
+  left_motor->Set(left_speed);
+  right_motor->Set(right_speed);
 
-  // Shooter
+  //Cargo
   if(xbox->GetTriggerAxis(hand::kLeftHand) != 0.0) {
     intake->Set(-xbox->GetTriggerAxis(hand::kLeftHand));
   }
   else {
     intake->Set(xbox->GetTriggerAxis(hand::kRightHand));
   }
-
+  
+  //Hatch
   if(xbox->GetAButton() == 1){
     Hatch_deploy->frc::DoubleSolenoid::Set	(frc::DoubleSolenoid::kReverse);
   }
