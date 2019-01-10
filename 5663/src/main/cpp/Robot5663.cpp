@@ -50,6 +50,5 @@ void Robot::TeleopPeriodic() {
 
   }
 
-
 void Robot::TestInit() {}
 void Robot::TestPeriodic() {}
