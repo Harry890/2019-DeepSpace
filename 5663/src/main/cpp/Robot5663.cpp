@@ -34,18 +34,17 @@ void Robot::TeleopPeriodic() {
   right_motor->Set(right_speed);
 
   //Cargo
-  if(xbox1->GetTriggerAxis(hand::kLeftHand) != 0.0) {
-    Cargo->Set(-xbox1->GetTriggerAxis(hand::kLeftHand));
-  }
-  else {
-    Cargo->Set(xbox1->GetTriggerAxis(hand::kRightHand));
+  if(xbox2->GetTriggerAxis(hand::kLeftHand) != 0.0) {
+    Cargo->Set(-xbox2->GetTriggerAxis(hand::kLeftHand));
+  } else {
+    Cargo->Set(xbox2->GetTriggerAxis(hand::kRightHand));
   }
   
   //Hatch
-  if(xbox1->GetAButton() == 1){
-    Hatch_deploy->frc::DoubleSolenoid::Set	(frc::DoubleSolenoid::kReverse);
-  }
-  else{ Hatch_deploy->frc::DoubleSolenoid::Set	(frc::DoubleSolenoid::kForward);
+  if(xbox2->GetAButton() == 1){
+    Hatch_deploy->frc::DoubleSolenoid::Set  (frc::DoubleSolenoid::kForward);
+  } else  { 
+    Hatch_deploy->frc::DoubleSolenoid::Set  (frc::DoubleSolenoid::kReverse);
   }
 
 
