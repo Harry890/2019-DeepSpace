@@ -22,6 +22,6 @@ class Robot : public frc::TimedRobot {
 
   frc::XboxController *xbox;
   frc::Spark *left_motor, *right_motor;
-  frc::Spark *intake;
+  frc::Spark *Cargo;
   frc::DoubleSolenoid *Hatch_deploy;
 };

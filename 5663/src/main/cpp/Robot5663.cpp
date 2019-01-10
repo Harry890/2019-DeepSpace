@@ -7,7 +7,7 @@ void Robot::RobotInit() {
   // Sparks
   left_motor = new frc::Spark(0);
   right_motor = new frc::Spark(1);
-  intake = new frc::Spark(2);
+  Cargo = new frc::Spark(2);
 
   // pistons
   Hatch_deploy = new frc::DoubleSolenoid(0, 1);
@@ -34,10 +34,10 @@ void Robot::TeleopPeriodic() {
 
   //Cargo
   if(xbox->GetTriggerAxis(hand::kLeftHand) != 0.0) {
-    intake->Set(-xbox->GetTriggerAxis(hand::kLeftHand));
+    Cargo->Set(-xbox->GetTriggerAxis(hand::kLeftHand));
   }
   else {
-    intake->Set(xbox->GetTriggerAxis(hand::kRightHand));
+    Cargo->Set(xbox->GetTriggerAxis(hand::kRightHand));
   }
   
   //Hatch
