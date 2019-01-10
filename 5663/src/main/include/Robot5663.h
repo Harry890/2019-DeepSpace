@@ -20,7 +20,7 @@ class Robot : public frc::TimedRobot {
   void TestInit() override;
   void TestPeriodic() override;
 
-  frc::XboxController *xbox;
+  frc::XboxController *xbox1, *xbox2;
   frc::Spark *left_motor, *right_motor;
   frc::Spark *Cargo;
   frc::DoubleSolenoid *Hatch_deploy;

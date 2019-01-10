@@ -12,7 +12,8 @@ void Robot::RobotInit() {
   // pistons
   Hatch_deploy = new frc::DoubleSolenoid(0, 1);
 
-  xbox = new frc::XboxController(0);
+  xbox1 = new frc::XboxController(0);
+  xbox2 = new frc::XboxController(1);
 }
 
 void Robot::AutonomousInit() {}
@@ -21,8 +22,8 @@ void Robot::AutonomousPeriodic() {}
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
   // Tank drive and intake
-  double left_speed = -xbox->GetY(hand::kLeftHand);
-  double right_speed = xbox->GetY(hand::kRightHand);
+  double left_speed = -xbox1->GetY(hand::kLeftHand);
+  double right_speed = xbox1->GetY(hand::kRightHand);
   //double intake_speed = xbox->GetTriggerAxis(hand::kLeftHand);
 
   left_speed *= std::abs(left_speed);
@@ -33,15 +34,15 @@ void Robot::TeleopPeriodic() {
   right_motor->Set(right_speed);
 
   //Cargo
-  if(xbox->GetTriggerAxis(hand::kLeftHand) != 0.0) {
-    Cargo->Set(-xbox->GetTriggerAxis(hand::kLeftHand));
+  if(xbox1->GetTriggerAxis(hand::kLeftHand) != 0.0) {
+    Cargo->Set(-xbox1->GetTriggerAxis(hand::kLeftHand));
   }
   else {
-    Cargo->Set(xbox->GetTriggerAxis(hand::kRightHand));
+    Cargo->Set(xbox1->GetTriggerAxis(hand::kRightHand));
   }
   
   //Hatch
-  if(xbox->GetAButton() == 1){
+  if(xbox1->GetAButton() == 1){
     Hatch_deploy->frc::DoubleSolenoid::Set	(frc::DoubleSolenoid::kReverse);
   }
   else{ Hatch_deploy->frc::DoubleSolenoid::Set	(frc::DoubleSolenoid::kForward);
