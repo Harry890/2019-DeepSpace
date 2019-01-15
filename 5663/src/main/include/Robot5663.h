@@ -4,6 +4,7 @@
 #include <frc/XboxController.h>
 #include <frc/Spark.h>
 #include <frc/DoubleSolenoid.h>
+#include <frc/Encoder.h>
 
 #include "curtin_ctre.h"
 
@@ -24,4 +25,5 @@ class Robot : public frc::TimedRobot {
   frc::Spark *left_motor, *right_motor;
   frc::Spark *Cargo, *Rotation;
   frc::DoubleSolenoid *hatch_deploy1, *hatch_deploy2, *hatch_deploy3;
+  frc::Encoder *leftE, *rightE;
 };
