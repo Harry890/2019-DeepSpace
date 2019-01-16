@@ -1,12 +1,16 @@
 #include "Robot5663.h"
 #include <math.h>
 
+using namespace curtinfrc;
 using hand = frc::XboxController::JoystickHand; // Type alias for hand
 
 void Robot::RobotInit() {
-  // Sparks
-  left_motor = new frc::Spark(0);
-  right_motor = new frc::Spark(1);
+  // Motor_Controllers
+  left_motor1 = new curtinfrc::talon_srx(0);
+  right_motor1 = new curtinfrc::talon_srx(2);
+  left_motor2 = new curtinfrc::talon_srx(1);
+  right_motor2 = new curtinfrc::talon_srx(3);
+
   Cargo = new frc::Spark(2);
   Rotation = new frc::Spark(3);
 
@@ -35,8 +39,10 @@ void Robot::TeleopPeriodic() {
   left_speed *= std::abs(left_speed);
   right_speed *= std::abs(right_speed);
 
-  left_motor->Set(left_speed);
-  right_motor->Set(right_speed);
+  left_motor1->Set(left_speed);
+  left_motor2->Set(left_speed);
+  right_motor1->Set(right_speed);
+  right_motor2->Set(right_speed);
 
   //Rotation
   double Rotation_speed = xbox2->GetY(hand::kRightHand);
