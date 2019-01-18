@@ -19,10 +19,7 @@ void Robot::RobotInit() {
   hatch_deploy2 = new frc::DoubleSolenoid(2, 3);
   hatch_deploy3 = new frc::DoubleSolenoid(4, 5);
 
-  //encoders
-  leftE = new frc::Encoder(0, 1, false);
-  rightE = new frc::Encoder(2, 3, false);
-
+  
   xbox1 = new frc::XboxController(0);
   xbox2 = new frc::XboxController(1);
 }
